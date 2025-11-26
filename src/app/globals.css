@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Sfondo: Bianco Ghiaccio (Molto pulito) */
+  background-color: #F8FAFC; 
+  /* Testo: Grigio Scuro (Non nero assoluto, più elegante) */
+  color: #1E293B; 
+}
+
+body {
+  background-color: #F8FAFC;
+  color: #1E293B;
+  /* Font più leggibile e professionale */
+  font-feature-settings: "ss01", "cv11"; 
+}
+
+/* Stile per le barre di scorrimento più eleganti */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
