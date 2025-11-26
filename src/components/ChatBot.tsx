@@ -1,12 +1,13 @@
 "use client";
 
+import React from "react"; // <--- 1. AGGIUNTO QUESTO IMPORT
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Bot, Phone, AlertTriangle, FileText, HardHat } from "lucide-react";
 
 type Message = { 
   id: number; 
-  text: string | JSX.Element; 
+  text: React.ReactNode; // <--- 2. CAMBIATO QUESTO TIPO (Era string | JSX.Element)
   sender: 'bot' | 'user'; 
   options?: string[];
   actionLink?: { text: string; url: string };
@@ -116,7 +117,6 @@ export default function ChatBot() {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            // MODIFICA QUI: Larghezza aumentata a 380px (md) e Altezza a 550px
             className="absolute bottom-20 right-0 w-[340px] md:w-[380px] h-[550px] bg-white border border-slate-200 rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
@@ -167,7 +167,7 @@ export default function ChatBot() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Opzioni Rapide - MODIFICATO: Rimosso max-h e overflow per mostrare tutto */}
+            {/* Opzioni Rapide */}
             <div className="p-3 bg-white border-t border-slate-100 flex flex-wrap gap-2 shrink-0">
                 {messages[messages.length - 1]?.options?.map((opt, idx) => (
                     <button 
