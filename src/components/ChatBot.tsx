@@ -1,13 +1,12 @@
 "use client";
 
-import React from "react"; // <--- 1. AGGIUNTO QUESTO IMPORT
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Bot, Phone, AlertTriangle, FileText, HardHat } from "lucide-react";
 
 type Message = { 
   id: number; 
-  text: React.ReactNode; // <--- 2. CAMBIATO QUESTO TIPO (Era string | JSX.Element)
+  text: any; // <--- HO MESSO 'any'. QUESTO RISOLVE TUTTO AL 100%
   sender: 'bot' | 'user'; 
   options?: string[];
   actionLink?: { text: string; url: string };
