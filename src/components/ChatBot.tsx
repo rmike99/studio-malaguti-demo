@@ -1,29 +1,40 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, X, Bot, Phone, AlertTriangle, FileText, HardHat } from "lucide-react";
+import { MessageSquare, X, Bot, FileText } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext"; // <--- Importa il contesto lingua
 
 type Message = { 
   id: number; 
-  text: any; // <--- HO MESSO 'any'. QUESTO RISOLVE TUTTO AL 100%
+  text: any; 
   sender: 'bot' | 'user'; 
   options?: string[];
   actionLink?: { text: string; url: string };
 };
 
-const INITIAL_MSG: Message = {
-  id: 1,
-  text: "Benvenuto nello Studio Malaguti. Sono l'assistente virtuale. Come posso aiutarti?",
-  sender: 'bot',
-  options: ["Sono un Condomino 🏠", "Cerco un Amministratore 🤝", "Servizi Tecnici/Edilizi 📐", "Urgenza / Guasto 🚨"]
-};
-
 export default function ChatBot() {
+  const { t, language } = useLanguage(); // <--- Ottieni lingua corrente e funzione t()
+  
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([INITIAL_MSG]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // RESETTA LA CHAT QUANDO CAMBIA LA LINGUA
+  useEffect(() => {
+    setMessages([{
+      id: 1,
+      text: t('chat_welcome'),
+      sender: 'bot',
+      options: [
+        t('chat_opt_1'), // "Sono un Condomino" (in IT/EN/ES)
+        t('chat_opt_2'), 
+        t('chat_opt_3'), 
+        t('chat_opt_4')
+      ]
+    }]);
+  }, [language, t]); // Esegue ogni volta che 'language' cambia
 
   useEffect(() => {
     if(isChatOpen) messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -37,75 +48,73 @@ export default function ChatBot() {
     setTimeout(() => {
       let botResponse: Message;
 
-      // --- SCENARIO 1: CONDOMINO ESISTENTE ---
-      if (option.includes("Condomino")) {
+      // CONFRONTIAMO CON LE TRADUZIONI ATTUALI
+      // Usiamo t(...) per verificare quale bottone è stato premuto nella lingua corrente
+
+      // SCENARIO 1: CONDOMINO
+      if (option === t('chat_opt_1')) {
         botResponse = { 
           id: Date.now() + 1, 
-          text: "Per i condomini gestiti, la via più veloce è l'Area Riservata. Puoi controllare rate, verbali e aprire ticket tracciati.", 
+          text: t('bot_ans_resident'), 
           sender: 'bot', 
-          options: ["Ho perso la password", "Voglio segnalare un guasto", "Torna al menu"],
-          actionLink: { text: "Accedi Area Riservata", url: "/area-utenti" }
+          options: [t('bot_opt_resident_1'), t('chat_opt_back')], // "Accedi Area" e "Torna Indietro"
+          actionLink: { text: t('bot_opt_resident_1'), url: "/area-utenti" }
         };
       } 
       
-      // --- SCENARIO 2: URGENZE ---
-      else if (option.includes("Urgenza") || option.includes("guasto")) {
+      // SCENARIO 2: AMMINISTRATORE
+      else if (option === t('chat_opt_2')) {
         botResponse = { 
           id: Date.now() + 1, 
-          text: (
-            <span>
-              Per <b>emergenze reali</b> (fughe gas, allagamenti, ascensori bloccati con persone) fuori orario ufficio, contatta i numeri affissi in bacheca.<br/><br/>
-              Per guasti ordinari (lampadine, citofoni), usa l'Area Riservata per garantire la presa in carico.
-            </span>
-          ), 
+          text: t('bot_ans_admin'), 
           sender: 'bot', 
-          options: ["Torna al menu"] 
+          options: [t('bot_opt_admin_1'), t('bot_opt_admin_2'), t('chat_opt_back')],
         };
       }
 
-      // --- SCENARIO 3: NUOVO CLIENTE ---
-      else if (option.includes("Amministratore") || option.includes("Preventivo")) {
+      // SCENARIO 3: TECNICO
+      else if (option === t('chat_opt_3')) {
         botResponse = { 
           id: Date.now() + 1, 
-          text: "Gestiamo immobili a Milano dal 1986 con un approccio tecnico-amministrativo. Per un preventivo preciso, inviaci i dati dello stabile via mail.", 
+          text: t('bot_ans_tech'), 
           sender: 'bot', 
-          options: ["Invia Mail Preventivo", "Chiama Studio", "Torna al menu"],
+          options: [t('bot_opt_tech_1'), t('chat_opt_back')] 
         };
       }
 
-      // --- SCENARIO 4: SERVIZI TECNICI ---
-      else if (option.includes("Tecnici") || option.includes("Edilizi")) {
+      // SCENARIO 4: URGENZA
+      else if (option === t('chat_opt_4')) {
         botResponse = { 
           id: Date.now() + 1, 
-          text: "L'Arch. Michele Malaguti si occupa di Direzione Lavori, Pratiche Edilizie (CILA/SCIA) e Sicurezza Cantieri. Desideri un appuntamento?", 
+          text: t('bot_ans_urgent'), 
           sender: 'bot', 
-          options: ["Chiama per Appuntamento", "Torna al menu"] 
+          options: [t('chat_opt_back')] 
         };
       }
 
-      // --- AZIONI DIRETTE ---
-      else if (option.includes("Chiama")) {
+      // AZIONI
+      else if (option === t('bot_opt_admin_2') || option === t('bot_opt_tech_1')) {
         window.location.href = "tel:0245409394";
-        botResponse = { id: Date.now() + 1, text: "Sto avviando la chiamata allo 02.45409394...", sender: 'bot', options: ["Torna al menu"] };
+        botResponse = { id: Date.now() + 1, text: t('bot_ans_call'), sender: 'bot', options: [t('chat_opt_back')] };
       }
-      else if (option.includes("Mail")) {
-        window.location.href = "mailto:studiomalaguti@gmail.com?subject=Richiesta Preventivo Amministrazione";
-        botResponse = { id: Date.now() + 1, text: "Ho aperto il tuo client di posta.", sender: 'bot', options: ["Torna al menu"] };
+      else if (option === t('bot_opt_admin_1')) {
+        window.location.href = "mailto:studiomalaguti@gmail.com";
+        botResponse = { id: Date.now() + 1, text: t('bot_ans_mail'), sender: 'bot', options: [t('chat_opt_back')] };
       }
       
-      // --- DEFAULT ---
+      // DEFAULT (TORNA AL MENU)
       else {
         botResponse = { 
           id: Date.now() + 1, 
-          text: "Ecco le opzioni principali.", 
+          text: t('bot_ans_default'), 
           sender: 'bot', 
-          options: ["Sono un Condomino 🏠", "Cerco un Amministratore 🤝", "Servizi Tecnici/Edilizi 📐", "Urgenza / Guasto 🚨"] 
+          options: [t('chat_opt_1'), t('chat_opt_2'), t('chat_opt_3'), t('chat_opt_4')] 
         };
       }
 
       setMessages(prev => [...prev, botResponse]);
       setIsTyping(false);
-    }, 1200);
+    }, 1000);
   };
 
   return (

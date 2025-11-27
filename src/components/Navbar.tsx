@@ -2,18 +2,34 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Building2, Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Building2, Menu, X, Globe, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext"; // <--- IMPORTA HOOK
+import { Language } from "@/utils/translations";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const pathname = usePathname();
+  
+  // USA IL CONTESTO LINGUA
+  const { language, setLanguage, t } = useLanguage(); 
+
+  const toggleLang = (lang: Language) => {
+    setLanguage(lang); // <--- CAMBIA LINGUA REALE
+    setIsLangOpen(false);
+  };
+
+  const linkStyle = (path: string) => `transition-colors ${
+    pathname === path ? "text-emerald-700 font-bold" : "text-slate-600 hover:text-emerald-700 font-medium"
+  }`;
 
   return (
     <>
       <nav className="fixed top-0 w-full z-50 px-6 py-4 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all">
         <div className="flex justify-between items-center max-w-7xl mx-auto">
           
-          {/* --- LOGO (Sempre visibile) --- */}
           <Link href="/" className="flex items-center gap-2 group z-50 relative" onClick={() => setIsMobileMenuOpen(false)}>
             <div className="bg-slate-900 text-white p-2 rounded-lg group-hover:bg-emerald-700 transition-colors">
               <Building2 size={22} />
@@ -24,24 +40,55 @@ export default function Navbar() {
             </div>
           </Link>
           
-          {/* --- MENU DESKTOP (Nascosto su Mobile) --- */}
-          <div className="hidden md:flex items-center gap-8">
-            <div className="flex gap-6 text-sm font-medium text-slate-600">
-              <Link href="/" className="hover:text-emerald-700 transition-colors">Home</Link> 
-              <Link href="/lo-studio" className="hover:text-emerald-700 transition-colors">Lo Studio</Link>
-              <Link href="/condomini" className="hover:text-emerald-700 transition-colors">I Nostri Condomini</Link>
-              <Link href="/servizi-tecnici" className="hover:text-emerald-700 transition-colors">Servizi Tecnici</Link>
-              <Link href="/dove-siamo" className="hover:text-emerald-700 transition-colors">Dove Siamo</Link>
+          <div className="hidden md:flex items-center gap-6">
+            <div className="flex gap-6 text-sm">
+              {/* USA LA FUNZIONE t() PER TRADURRE */}
+              <Link href="/" className={linkStyle("/")}>{t('nav_home')}</Link> 
+              <Link href="/lo-studio" className={linkStyle("/lo-studio")}>{t('nav_studio')}</Link>
+              <Link href="/condomini" className={linkStyle("/condomini")}>{t('nav_condos')}</Link>
+              <Link href="/servizi-tecnici" className={linkStyle("/servizi-tecnici")}>{t('nav_tech')}</Link>
+              <Link href="/dove-siamo" className={linkStyle("/dove-siamo")}>{t('nav_where')}</Link>
+            </div>
+
+            {/* SELETTORE LINGUA ATTIVO */}
+            <div className="relative">
+              <button 
+                onClick={() => setIsLangOpen(!isLangOpen)}
+                className="flex items-center gap-1 text-slate-600 hover:text-slate-900 transition-colors text-sm font-bold uppercase"
+              >
+                <Globe size={18} /> {language}
+              </button>
+
+              <AnimatePresence>
+                {isLangOpen && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }}
+                    className="absolute top-full right-0 mt-2 bg-white border border-slate-200 rounded-xl shadow-xl w-32 overflow-hidden py-1"
+                  >
+                    {(['IT', 'EN', 'ES'] as Language[]).map((lang) => (
+                      <button 
+                        key={lang}
+                        onClick={() => toggleLang(lang)}
+                        className="w-full text-left px-4 py-2 text-sm hover:bg-slate-50 flex items-center justify-between text-slate-700"
+                      >
+                        <span className="flex items-center gap-2">
+                          {lang === "IT" ? "🇮🇹" : lang === "EN" ? "🇬🇧" : "🇪🇸"} {lang}
+                        </span>
+                        {language === lang && <Check size={14} className="text-emerald-600"/>}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             <Link href="/area-utenti">
               <button className="text-sm font-semibold text-white bg-slate-900 hover:bg-emerald-700 transition-colors px-5 py-2.5 rounded-lg shadow-md">
-                Area Riservata
+                {t('nav_area')}
               </button>
             </Link>
           </div>
 
-          {/* --- BURGER BUTTON (Visibile solo su Mobile) --- */}
           <button 
             className="md:hidden text-slate-900 p-2 z-50 relative focus:outline-none"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -52,7 +99,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* --- MENU MOBILE A COMPARSA --- */}
+      {/* MENU MOBILE AGGIORNATO */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -63,30 +110,31 @@ export default function Navbar() {
             className="fixed inset-0 z-40 bg-white pt-24 px-6 pb-6 md:hidden flex flex-col shadow-xl"
           >
             <div className="flex flex-col gap-6 text-lg font-medium text-slate-800">
-              <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="border-b border-slate-100 pb-4 flex justify-between items-center">
-                Home <span className="text-slate-300">&rarr;</span>
-              </Link>
-              <Link href="/lo-studio" onClick={() => setIsMobileMenuOpen(false)} className="border-b border-slate-100 pb-4 flex justify-between items-center">
-                Lo Studio <span className="text-slate-300">&rarr;</span>
-              </Link>
-              <Link href="/condomini" onClick={() => setIsMobileMenuOpen(false)} className="border-b border-slate-100 pb-4 flex justify-between items-center">
-                I Nostri Condomini <span className="text-slate-300">&rarr;</span>
-              </Link>
-              <Link href="/servizi-tecnici" onClick={() => setIsMobileMenuOpen(false)} className="border-b border-slate-100 pb-4 flex justify-between items-center">
-                Servizi Tecnici <span className="text-slate-300">&rarr;</span>
-              </Link>
-              <Link href="/dove-siamo" onClick={() => setIsMobileMenuOpen(false)} className="border-b border-slate-100 pb-4 flex justify-between items-center">
-                Dove Siamo <span className="text-slate-300">&rarr;</span>
-              </Link>
+                <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="border-b border-slate-100 pb-4">{t('nav_home')}</Link>
+                <Link href="/lo-studio" onClick={() => setIsMobileMenuOpen(false)} className="border-b border-slate-100 pb-4">{t('nav_studio')}</Link>
+                <Link href="/condomini" onClick={() => setIsMobileMenuOpen(false)} className="border-b border-slate-100 pb-4">{t('nav_condos')}</Link>
+                <Link href="/servizi-tecnici" onClick={() => setIsMobileMenuOpen(false)} className="border-b border-slate-100 pb-4">{t('nav_tech')}</Link>
+                <Link href="/dove-siamo" onClick={() => setIsMobileMenuOpen(false)} className="border-b border-slate-100 pb-4">{t('nav_where')}</Link>
+            </div>
+
+            <div className="flex justify-center gap-4 py-6 border-b border-slate-100">
+               {(['IT', 'EN', 'ES'] as Language[]).map((lang) => (
+                 <button 
+                   key={lang}
+                   onClick={() => toggleLang(lang)}
+                   className={`px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 ${language === lang ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-600"}`}
+                 >
+                   {lang === "IT" ? "🇮🇹" : lang === "EN" ? "🇬🇧" : "🇪🇸"} {lang}
+                 </button>
+               ))}
             </div>
 
             <div className="mt-auto mb-8">
               <Link href="/area-utenti" onClick={() => setIsMobileMenuOpen(false)}>
                 <button className="w-full text-center text-white bg-emerald-600 active:bg-emerald-700 transition-colors px-5 py-4 rounded-xl shadow-lg font-bold text-lg">
-                  Accedi Area Riservata
+                  {t('nav_area')}
                 </button>
               </Link>
-              <p className="text-center text-slate-400 text-xs mt-4">Studio Malaguti - Milano</p>
             </div>
           </motion.div>
         )}

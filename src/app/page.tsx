@@ -3,11 +3,14 @@
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Dashboard from "@/components/Dashboard"; // La nostra nuova griglia servizi
+import Dashboard from "@/components/Dashboard"; 
 import ChatBot from "@/components/ChatBot";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/context/LanguageContext"; // <--- IMPORT
 
 export default function Home() {
+  const { t } = useLanguage(); // <--- HOOK
+
   return (
     <main className="min-h-screen selection:bg-emerald-200 selection:text-emerald-900 overflow-x-hidden relative bg-slate-50">
       <Navbar />
@@ -15,29 +18,28 @@ export default function Home() {
       <div className="max-w-6xl mx-auto px-6 pb-20">
         <Hero />
         
-        {/* Titolo Sezione Servizi */}
-        <div className="mb-10 mt-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">I Nostri Servizi.</h2>
-          <p className="text-slate-500">Un approccio multidisciplinare per la gestione del tuo immobile.</p>
+        <div className="mb-12 mt-12 text-center">
+          <span className="text-emerald-600 font-bold text-sm tracking-widest uppercase">{t('serv_title')}</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">{t('serv_subtitle')}</h2>
         </div>
         
         <Dashboard />
       </div>
 
-       {/* --- TICKER REALE (Testo Istituzionale) --- */}
-       <div className="w-full overflow-hidden py-4 border-y border-slate-200 bg-white mt-20 relative">
+       {/* --- TICKER TRADOTTO --- */}
+       <div className="w-full overflow-hidden py-5 border-y border-slate-200 bg-white mt-16 relative">
            <motion.div 
-             className="flex gap-16 whitespace-nowrap"
+             className="flex gap-20 whitespace-nowrap"
              animate={{ x: [0, -1000] }}
-             transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+             transition={{ repeat: Infinity, duration: 50, ease: "linear" }}
            >
              {[...Array(3)].map((_, i) => (
-               <div key={i} className="flex gap-16 text-sm font-medium text-slate-500 uppercase tracking-widest">
-                 <span className="flex items-center gap-2">🏛️ Studio fondato nel 1986</span>
-                 <span className="flex items-center gap-2">📐 Arch. Michele Malaguti</span>
-                 <span className="flex items-center gap-2">📍 Viale Umbria 126, Milano</span>
-                 <span className="flex items-center gap-2">✅ Amministrazioni Stabili & Consulenza Tecnica</span>
-                 <span className="flex items-center gap-2">🕒 Ricevimento su Appuntamento</span>
+               <div key={i} className="flex gap-20 text-sm font-semibold text-slate-400 uppercase tracking-widest items-center">
+                 <span>{t('ticker_1')}</span>
+                 <span>{t('ticker_2')}</span>
+                 <span>{t('ticker_3')}</span>
+                 <span>{t('ticker_4')}</span>
+                 <span>{t('ticker_5')}</span>
                </div>
              ))}
            </motion.div>

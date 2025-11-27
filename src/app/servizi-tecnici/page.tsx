@@ -5,27 +5,30 @@ import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
 import { motion } from "framer-motion";
 import { Ruler, HardHat, FileText, LayoutTemplate, CheckCircle } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ServiziTecniciPage() {
+  const { t } = useLanguage();
+
   const services = [
     {
-      title: "Direzione Lavori & Progettazione",
-      desc: "Gestione completa del cantiere, dalla stesura dei capitolati d'appalto alla direzione lavori per ristrutturazioni di facciate, tetti e parti comuni.",
+      title: t('tech_s1_title'),
+      desc: t('tech_s1_desc'),
       icon: <Ruler size={32} className="text-emerald-500" />
     },
     {
-      title: "Sicurezza Cantieri (D.Lgs 81/08)",
-      desc: "Abilitazione al ruolo di Coordinatore della Sicurezza in fase di Progettazione ed Esecuzione (CSP/CSE), per tutelare il condominio da rischi penali.",
+      title: t('tech_s2_title'),
+      desc: t('tech_s2_desc'),
       icon: <HardHat size={32} className="text-amber-500" />
     },
     {
-      title: "Pratiche Edilizie e Catastali",
-      desc: "Presentazione pratiche CILA, SCIA e Permessi di Costruire. Aggiornamenti catastali e regolarizzazioni urbanistiche presso il Comune di Milano.",
+      title: t('tech_s3_title'),
+      desc: t('tech_s3_desc'),
       icon: <LayoutTemplate size={32} className="text-blue-500" />
     },
     {
-      title: "Tabelle Millesimali",
-      desc: "Redazione e revisione delle tabelle millesimali (proprietà, riscaldamento, ascensore) secondo i più recenti criteri normativi e giurisprudenziali.",
+      title: t('tech_s4_title'),
+      desc: t('tech_s4_desc'),
       icon: <FileText size={32} className="text-purple-500" />
     }
   ];
@@ -36,9 +39,9 @@ export default function ServiziTecniciPage() {
 
       <section className="pt-32 pb-16 px-6 bg-slate-900 text-white">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">Studio Tecnico Interno.</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">{t('tech_hero_title')}</h1>
           <p className="text-xl text-slate-400 max-w-2xl">
-            Oltre l'amministrazione. Un unico interlocutore per le esigenze tecniche e strutturali del tuo immobile.
+            {t('tech_hero_desc')}
           </p>
         </div>
       </section>
@@ -61,10 +64,10 @@ export default function ServiziTecniciPage() {
               <p className="text-slate-600 leading-relaxed mb-6">{service.desc}</p>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2 text-sm text-slate-500">
-                  <CheckCircle size={16} className="text-emerald-500" /> Consulenza preliminare gratuita
+                  <CheckCircle size={16} className="text-emerald-500" /> {t('tech_check_1')}
                 </li>
                 <li className="flex items-center gap-2 text-sm text-slate-500">
-                  <CheckCircle size={16} className="text-emerald-500" /> Sopralluoghi tecnici in loco
+                  <CheckCircle size={16} className="text-emerald-500" /> {t('tech_check_2')}
                 </li>
               </ul>
             </motion.div>

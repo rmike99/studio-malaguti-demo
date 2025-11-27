@@ -1,8 +1,11 @@
 "use client";
 import { Building2, Mail, Phone, MapPin, Printer } from "lucide-react";
-import Link from "next/link"; // Importiamo Link per la navigazione interna veloce
+import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext"; // <--- 1. IMPORT
 
 export default function Footer() {
+  const { t } = useLanguage(); // <--- 2. HOOK
+
   return (
     <footer className="bg-slate-900 text-white border-t border-slate-800">
       <div className="max-w-6xl mx-auto px-6 py-16">
@@ -15,14 +18,13 @@ export default function Footer() {
               <span className="text-xl font-bold tracking-tight uppercase">Studio Malaguti</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
-              Amministrazione Condominiale e Studio di Architettura.
-              Professionalità ed esperienza a Milano dal 1986.
+              {t('footer_desc')} {/* Tradotto */}
             </p>
           </div>
           
           {/* Contatti */}
           <div>
-            <h4 className="font-bold text-lg mb-6 text-emerald-400">Sede e Contatti</h4>
+            <h4 className="font-bold text-lg mb-6 text-emerald-400">{t('footer_contacts')}</h4>
             <ul className="space-y-4 text-slate-300 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-emerald-500 mt-1 shrink-0"/> 
@@ -41,16 +43,16 @@ export default function Footer() {
 
           {/* Servizi Online */}
           <div>
-            <h4 className="font-bold text-lg mb-6 text-emerald-400">Servizi Online</h4>
+            <h4 className="font-bold text-lg mb-6 text-emerald-400">{t('footer_services')}</h4>
             <ul className="space-y-4 text-slate-300 text-sm">
               <li>
                 <Link href="/area-utenti" className="flex items-center gap-2 hover:text-white transition-colors">
-                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> Area Riservata Condomini
+                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> {t('nav_area')}
                 </Link>
               </li>
               <li>
                 <Link href="/privacy-policy" className="flex items-center gap-2 hover:text-white transition-colors">
-                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> Privacy Policy
+                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> {t('footer_privacy')}
                 </Link>
               </li>
             </ul>
@@ -60,7 +62,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
           <p>© 2025 Studio Malaguti - Arch. Michele Malaguti.</p>
-          <p>P.IVA disponibile in sede.</p>
+          <p>{t('footer_piva')}</p>
         </div>
 
       </div>

@@ -5,77 +5,73 @@ import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
 import { motion } from "framer-motion";
 import { Award, Clock, Users, Building } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function LoStudioPage() {
+  const { t } = useLanguage();
+
   return (
     <main className="min-h-screen bg-slate-50 selection:bg-emerald-200 selection:text-emerald-900">
       <Navbar />
 
-      {/* Hero Interna */}
       <section className="pt-32 pb-16 px-6 bg-white border-b border-slate-200">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-wider mb-6"
           >
-            Dal 1986
+            {t('studio_hero_badge')}
           </motion.div>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-bold text-slate-900 mb-6"
           >
-            Professionalità e <span className="text-emerald-600">Tradizione.</span>
+            {t('studio_hero_title')}
           </motion.h1>
           <p className="text-xl text-slate-500 leading-relaxed">
-            Lo Studio Malaguti rappresenta un punto di riferimento a Milano per l'amministrazione condominiale e la consulenza tecnica integrata.
+            {t('studio_hero_desc')}
           </p>
         </div>
       </section>
 
-      {/* Storia e Valori */}
       <section className="py-20 px-6 max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-slate-900">La nostra storia.</h2>
+            <h2 className="text-3xl font-bold text-slate-900">{t('studio_hist_title')}</h2>
             <div className="w-20 h-1 bg-emerald-500 rounded-full"></div>
-            <p className="text-slate-600 leading-relaxed">
-              Fondato nel 1986, lo studio nasce con l'obiettivo di offrire una gestione immobiliare diversa: non solo contabile, ma profondamente tecnica.
-            </p>
-            <p className="text-slate-600 leading-relaxed">
-              Sotto la guida dell'<b>Arch. Michele Malaguti</b>, lo studio ha evoluto le proprie competenze integrando la gestione ordinaria con servizi di progettazione architettonica e sicurezza cantieri, garantendo ai condomini un unico interlocutore qualificato per ogni esigenza dell'edificio.
-            </p>
+            <p className="text-slate-600 leading-relaxed">{t('studio_hist_p1')}</p>
+            <p className="text-slate-600 leading-relaxed">{t('studio_hist_p2')}</p>
           </div>
           
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col gap-3">
               <Clock className="text-emerald-600" size={32} />
               <span className="text-2xl font-bold text-slate-900">35+</span>
-              <span className="text-sm text-slate-500">Anni di Esperienza</span>
+              <span className="text-sm text-slate-500">{t('studio_stat_exp')}</span>
             </div>
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col gap-3">
               <Building className="text-blue-600" size={32} />
               <span className="text-2xl font-bold text-slate-900">100%</span>
-              <span className="text-sm text-slate-500">Gestione Milano</span>
+              <span className="text-sm text-slate-500">{t('studio_stat_milano')}</span>
             </div>
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col gap-3">
               <Users className="text-purple-600" size={32} />
               <span className="text-2xl font-bold text-slate-900">ANACI</span>
-              <span className="text-sm text-slate-500">Iscrizione Associazione</span>
+              <span className="text-sm text-slate-500">{t('studio_stat_assoc')}</span>
             </div>
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col gap-3">
               <Award className="text-amber-500" size={32} />
               <span className="text-2xl font-bold text-slate-900">Arch.</span>
-              <span className="text-sm text-slate-500">Competenza Tecnica</span>
+              <span className="text-sm text-slate-500">{t('studio_stat_tech')}</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Quote */}
       <section className="bg-slate-900 py-16 px-6 text-center">
         <div className="max-w-3xl mx-auto">
           <p className="text-2xl md:text-3xl text-white font-serif italic leading-relaxed">
-            "Il condominio non è solo un insieme di numeri, ma una struttura viva che richiede cura tecnica, manutenzione e visione architettonica."
+            {t('studio_quote')}
           </p>
           <div className="mt-8 text-emerald-400 font-bold tracking-widest uppercase text-sm">
             Arch. Michele Malaguti
