@@ -140,6 +140,18 @@ export const translations = {
     area_btn_access: "Accedi al Portale Sicuro",
     area_no_creds: "Non hai le credenziali?",
     area_req_creds: "Richiedile alla segreteria",
+
+    // Timeline
+    timeline_title: "La nostra evoluzione.",
+    timeline_subtitle: "Da quasi 40 anni, anticipiamo le esigenze del mercato immobiliare.",
+    time_1986_title: "Fondazione",
+    time_1986_desc: "Nasce lo Studio Malaguti con focus sull'amministrazione condominiale pura a Milano.",
+    time_2000_title: "Integrazione Tecnica",
+    time_2000_desc: "L'Arch. Michele Malaguti unisce le competenze di progettazione alla gestione immobiliare.",
+    time_2015_title: "Digitalizzazione",
+    time_2015_desc: "Introduzione dei primi sistemi di gestione online e trasparenza digitale per i condomini.",
+    time_2025_title: "Futuro Smart",
+    time_2025_desc: "Integrazione AI, Area Riservata avanzata e gestione energetica sostenibile.",
   },
   EN: {
     nav_home: "Home",
@@ -272,6 +284,18 @@ export const translations = {
     area_btn_access: "Access Secure Portal",
     area_no_creds: "Don't have credentials?",
     area_req_creds: "Request them from the office",
+
+    // Timeline
+    timeline_title: "Our Evolution.",
+    timeline_subtitle: "For nearly 40 years, we have anticipated the needs of the real estate market.",
+    time_1986_title: "Foundation",
+    time_1986_desc: "Studio Malaguti is born with a focus on pure condominium administration in Milan.",
+    time_2000_title: "Technical Integration",
+    time_2000_desc: "Arch. Michele Malaguti combines design skills with property management.",
+    time_2015_title: "Digitalization",
+    time_2015_desc: "Introduction of the first online management systems and digital transparency for residents.",
+    time_2025_title: "Smart Future",
+    time_2025_desc: "AI integration, advanced Client Area, and sustainable energy management.",
   },
   ES: {
     nav_home: "Inicio",
@@ -404,5 +428,17 @@ export const translations = {
     area_btn_access: "Acceder al Portal Seguro",
     area_no_creds: "¿No tiene credenciales?",
     area_req_creds: "Solicítelas a la secretaría",
+
+    // Timeline
+    timeline_title: "Nuestra Evolución.",
+    timeline_subtitle: "Desde hace casi 40 años, anticipamos las necesidades del mercado inmobiliario.",
+    time_1986_title: "Fundación",
+    time_1986_desc: "Nace Studio Malaguti con enfoque en la administración de condominios en Milán.",
+    time_2000_title: "Integración Técnica",
+    time_2000_desc: "El Arq. Michele Malaguti une las competencias de diseño a la gestión inmobiliaria.",
+    time_2015_title: "Digitalización",
+    time_2015_desc: "Introducción de los primeros sistemas de gestión en línea y transparencia digital.",
+    time_2025_title: "Futuro Inteligente",
+    time_2025_desc: "Integración de IA, Área Reservada avanzada y gestión energética sostenible.",
   }
 };

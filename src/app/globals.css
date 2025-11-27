@@ -14,6 +14,22 @@ body {
   color: #1E293B;
   /* Font più leggibile e professionale */
   font-feature-settings: "ss01", "cv11"; 
+
+  /* Blocca la selezione del testo su TUTTI i browser */
+  -webkit-user-select: none; /* Safari/Chrome */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* IE/Edge */
+  user-select: none;         /* Standard */
+  
+  /* Blocca il trascinamento delle immagini */
+  -webkit-user-drag: none;
+}
+
+input, textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
 /* Stile per le barre di scorrimento più eleganti */

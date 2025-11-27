@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Ruler, FileCheck, Shield, Building } from "lucide-react";
 import ContactModal from "@/components/ContactModal";
 import { useLanguage } from "@/context/LanguageContext";
+import MagneticButton from "@/components/MagneticButton";
 
 export default function Hero() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -59,12 +60,12 @@ export default function Hero() {
           transition={{ delay: 0.3 }}
           className="flex justify-center pt-6"
         >
-          <button 
-            onClick={() => setIsContactOpen(true)}
-            className="bg-slate-900 text-white px-10 py-4 rounded-xl font-semibold hover:bg-emerald-700 hover:shadow-lg transition-all flex items-center justify-center gap-2 text-lg"
-          >
-            {t('hero_cta')} <ArrowRight size={20} />
-          </button>
+          <MagneticButton 
+          onClick={() => setIsContactOpen(true)}
+          className="bg-slate-900 text-white px-10 py-4 rounded-xl font-semibold hover:bg-emerald-700 hover:shadow-xl transition-all flex items-center justify-center gap-2 text-lg"
+        >
+          {t('hero_cta')} <ArrowRight size={20} />
+        </MagneticButton>
         </motion.div>
 
         {/* I Pilastri Tecnici */}

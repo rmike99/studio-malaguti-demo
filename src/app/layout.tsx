@@ -7,6 +7,7 @@ import AccessibilityWidget from "@/components/AccessibilityWidget";
 import ScrollToTop from "@/components/ScrollToTop";
 import NextTopLoader from 'nextjs-toploader';
 import { LanguageProvider } from "@/context/LanguageContext";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,7 +35,8 @@ export default function RootLayout({
           speed={200}
           shadow="0 0 10px #059669,0 0 5px #059669"
         />
-
+        <ScrollProgress />
+        
         <LanguageProvider>
           <ClientLayout>
             {children}
