@@ -10,6 +10,7 @@ import { LanguageProvider } from "@/context/LanguageContext";
 import ScrollProgress from "@/components/ScrollProgress";
 import { CookieProvider } from "@/context/CookieContext";
 import AnalyticsManager from "@/components/AnalyticsManager";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -76,7 +77,8 @@ export default function RootLayout({
               <AccessibilityWidget />
               <ScrollToTop />
               
-              <AnalyticsManager /> 
+              <AnalyticsManager />
+              <Toaster position="top-center" richColors closeButton />
               
             </ClientLayout>
 

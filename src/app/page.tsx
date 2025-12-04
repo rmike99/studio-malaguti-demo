@@ -8,6 +8,7 @@ import Timeline from "@/components/Timeline";
 import ChatBot from "@/components/ChatBot";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
+import TrustBar from "@/components/TrustBar";
 
 export default function Home() {
   const { t } = useLanguage();
@@ -16,8 +17,9 @@ export default function Home() {
     <main className="min-h-screen selection:bg-emerald-200 selection:text-emerald-900 overflow-x-hidden relative bg-slate-50">
       <Navbar />
 
-      {/* Hero Section */}
       <Hero />
+
+      <TrustBar />
       
       {/* Sezione Servizi (Dashboard) */}
       <div className="max-w-6xl mx-auto px-6 py-20">
