@@ -98,6 +98,8 @@ export const translations = {
     contact_msg: "Messaggio",
     contact_btn: "Invia Richiesta",
     contact_privacy: "I tuoi dati saranno trattati nel rispetto della Privacy Policy.",
+    
+    // COOKIES
     cookie_title: "Informativa Cookies",
     cookie_text: "Utilizziamo cookie tecnici per garantire il corretto funzionamento del sito. Per maggiori dettagli consulta la nostra Privacy Policy.",
     cookie_accept: "Accetta Tutto",
@@ -243,6 +245,8 @@ export const translations = {
     contact_msg: "Message",
     contact_btn: "Send Request",
     contact_privacy: "Your data will be processed in accordance with our Privacy Policy.",
+    
+    // COOKIES
     cookie_title: "Cookie Policy",
     cookie_text: "We use technical cookies to ensure the proper functioning of the site. For more details, consult our Privacy Policy.",
     cookie_accept: "Accept All",
@@ -387,6 +391,8 @@ export const translations = {
     contact_msg: "Mensaje",
     contact_btn: "Enviar Solicitud",
     contact_privacy: "Sus datos serán tratados de acuerdo con nuestra Política de Privacidad.",
+    
+    // COOKIES
     cookie_title: "Política de Cookies",
     cookie_text: "Utilizamos cookies técnicas para garantizar el correcto funcionamiento del sitio. Para más detalles, consulte nuestra Política de Privacidad.",
     cookie_accept: "Aceptar Todo",

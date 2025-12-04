@@ -8,6 +8,8 @@ import ScrollToTop from "@/components/ScrollToTop";
 import NextTopLoader from 'nextjs-toploader';
 import { LanguageProvider } from "@/context/LanguageContext";
 import ScrollProgress from "@/components/ScrollProgress";
+import { CookieProvider } from "@/context/CookieContext";
+import AnalyticsManager from "@/components/AnalyticsManager";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -65,12 +67,20 @@ export default function RootLayout({
         <ScrollProgress />
         
         <LanguageProvider>
-          <ClientLayout>
-            {children}
-            <CookieBanner />
-            <AccessibilityWidget />
-            <ScrollToTop />
-          </ClientLayout>
+          <CookieProvider>
+            
+            <ClientLayout>
+              {children}
+              
+              <CookieBanner />
+              <AccessibilityWidget />
+              <ScrollToTop />
+              
+              <AnalyticsManager /> 
+              
+            </ClientLayout>
+
+          </CookieProvider>
         </LanguageProvider>
       </body>
     </html>
