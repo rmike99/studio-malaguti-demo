@@ -12,13 +12,14 @@ import ScrollProgress from "@/components/ScrollProgress";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://studiomalaguti-preview.netlify.app'),
   title: "Studio Malaguti | Amministrazione e Architettura Milano",
   description: "Studio di amministrazione condominiale e consulenza tecnica a Milano. Gestione trasparente, Area Riservata e Sicurezza Cantieri.",  
 
   openGraph: {
     title: "Studio Malaguti | Eccellenza nella gestione immobiliare",
     description: "Amministrazione condominiale e studio tecnico integrato a Milano dal 1986.",
-    url: "https://studiomalaguti.it",
+    url: "/",
     siteName: "Studio Malaguti",
     images: [
       {
