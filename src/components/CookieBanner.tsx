@@ -13,7 +13,6 @@ export default function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Mostra il banner solo se l'utente non ha ancora deciso (consent === null)
     if (consent === null) {
       const timer = setTimeout(() => setIsVisible(true), 1000);
       return () => clearTimeout(timer);
@@ -39,7 +38,10 @@ export default function CookieBanner() {
               <div>
                 <h4 className="font-bold text-sm mb-1">{t('cookie_title')}</h4>
                 <p className="text-xs text-slate-300 leading-relaxed mb-4">
-                  {t('cookie_text')}
+                  {t('cookie_text')}{" "}
+                  <Link href="/privacy-policy" className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2 transition-colors">
+                    {t('footer_privacy')}
+                  </Link>.
                 </p>
                 <div className="flex gap-3">
                   <button 
