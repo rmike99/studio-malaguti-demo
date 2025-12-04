@@ -13,7 +13,33 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Studio Malaguti | Amministrazione e Architettura Milano",
-  description: "Studio di amministrazione condominiale e consulenza tecnica a Milano. Fondato nel 1986, gestito dall'Arch. Michele Malaguti.",
+  description: "Studio di amministrazione condominiale e consulenza tecnica a Milano. Gestione trasparente, Area Riservata e Sicurezza Cantieri.",  
+
+  openGraph: {
+    title: "Studio Malaguti | Eccellenza nella gestione immobiliare",
+    description: "Amministrazione condominiale e studio tecnico integrato a Milano dal 1986.",
+    url: "https://studiomalaguti.it",
+    siteName: "Studio Malaguti",
+    images: [
+      {
+        url: "/logoMalaguti.png",
+        width: 1200,
+        height: 630,
+        alt: "Studio Malaguti Homepage",
+      },
+    ],
+    locale: "it_IT",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Studio Malaguti | Milano",
+    description: "Gestione immobiliare e consulenza tecnica.",
+    images: ["/logoMalaguti.png"],
+  },
+  icons: {
+    icon: "/logoMalaguti.ico",
+  }
 };
 
 export default function RootLayout({
