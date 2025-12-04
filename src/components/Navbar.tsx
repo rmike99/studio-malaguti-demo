@@ -5,19 +5,18 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Building2, Menu, X, Globe, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLanguage } from "@/context/LanguageContext"; // <--- IMPORTA HOOK
+import { useLanguage } from "@/context/LanguageContext";
 import { Language } from "@/utils/translations";
+import StudioStatus from "@/components/StudioStatus";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const pathname = usePathname();
-  
-  // USA IL CONTESTO LINGUA
   const { language, setLanguage, t } = useLanguage(); 
 
   const toggleLang = (lang: Language) => {
-    setLanguage(lang); // <--- CAMBIA LINGUA REALE
+    setLanguage(lang);
     setIsLangOpen(false);
   };
 
@@ -41,8 +40,9 @@ export default function Navbar() {
           </Link>
           
           <div className="hidden md:flex items-center gap-6">
+            <StudioStatus />
+
             <div className="flex gap-6 text-sm">
-              {/* USA LA FUNZIONE t() PER TRADURRE */}
               <Link href="/" className={linkStyle("/")}>{t('nav_home')}</Link> 
               <Link href="/lo-studio" className={linkStyle("/lo-studio")}>{t('nav_studio')}</Link>
               <Link href="/condomini" className={linkStyle("/condomini")}>{t('nav_condos')}</Link>
@@ -50,7 +50,6 @@ export default function Navbar() {
               <Link href="/dove-siamo" className={linkStyle("/dove-siamo")}>{t('nav_where')}</Link>
             </div>
 
-            {/* SELETTORE LINGUA ATTIVO */}
             <div className="relative">
               <button 
                 onClick={() => setIsLangOpen(!isLangOpen)}
@@ -99,7 +98,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* MENU MOBILE AGGIORNATO */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div

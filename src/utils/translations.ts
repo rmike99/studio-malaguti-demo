@@ -12,7 +12,7 @@ export const translations = {
     
     // Hero & Home
     hero_badge: "Studio Tecnico e Amministrativo dal 1986",
-    hero_title_1: "Studio Malaguti.",
+    hero_title_1: "Studio Malaguti",
     hero_title_2: "Eccellenza nella gestione.",
     hero_desc: "L'unione perfetta tra amministrazione condominiale e competenza tecnica. Guidato dall'Arch. Michele Malaguti, lo studio offre servizi integrati a Milano.",
     hero_cta: "Richiedi Consulenza",
@@ -101,7 +101,7 @@ export const translations = {
     
     // COOKIES
     cookie_title: "Informativa Cookies",
-    cookie_text: "Utilizziamo cookie tecnici per garantire il corretto funzionamento del sito. Per maggiori dettagli consulta la nostra Privacy Policy.",
+    cookie_text: "Utilizziamo cookie tecnici per garantire il corretto funzionamento del sito. Per maggiori dettagli consulta la nostra ",
     cookie_accept: "Accetta Tutto",
     cookie_reject: "Rifiuta",
     
@@ -165,7 +165,7 @@ export const translations = {
     
     // HERO
     hero_badge: "Technical & Administrative Firm since 1986",
-    hero_title_1: "Studio Malaguti.",
+    hero_title_1: "Studio Malaguti",
     hero_title_2: "Excellence in management.",
     hero_desc: "The perfect blend of property management and technical expertise. Led by Arch. Michele Malaguti, the firm offers integrated services in Milan.",
     hero_cta: "Request Consultation",
@@ -248,7 +248,7 @@ export const translations = {
     
     // COOKIES
     cookie_title: "Cookie Policy",
-    cookie_text: "We use technical cookies to ensure the proper functioning of the site. For more details, consult our Privacy Policy.",
+    cookie_text: "We use technical cookies to ensure the proper functioning of the site. For more details, consult our ",
     cookie_accept: "Accept All",
     cookie_reject: "Reject",
     
@@ -311,7 +311,7 @@ export const translations = {
     
     // HERO
     hero_badge: "Estudio Técnico y Administrativo desde 1986",
-    hero_title_1: "Studio Malaguti.",
+    hero_title_1: "Studio Malaguti",
     hero_title_2: "Excelencia en gestión.",
     hero_desc: "La unión perfecta entre administración de condominios y competencia técnica. Dirigido por el Arq. Michele Malaguti, el estudio ofrece servicios integrados en Milán.",
     hero_cta: "Solicitar Asesoría",
@@ -394,7 +394,7 @@ export const translations = {
     
     // COOKIES
     cookie_title: "Política de Cookies",
-    cookie_text: "Utilizamos cookies técnicas para garantizar el correcto funcionamiento del sitio. Para más detalles, consulte nuestra Política de Privacidad.",
+    cookie_text: "Utilizamos cookies técnicas para garantizar el correcto funcionamiento del sitio. Para más detalles, consulte nuestra ",
     cookie_accept: "Aceptar Todo",
     cookie_reject: "Rechazar",
     
