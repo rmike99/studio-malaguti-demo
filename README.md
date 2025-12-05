@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏢 Studio Malaguti - Next.js Web Platform
 
-## Getting Started
+Questo progetto è il nuovo sito web istituzionale e gestionale per lo **Studio Malaguti**, uno studio di amministrazione condominiale e architettura tecnica basato a Milano.
 
-First, run the development server:
+Il sito è costruito con **Next.js (App Router)** e **TypeScript**, progettato per essere veloce, accessibile, multilingua e altamente interattivo.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🔗 **Live Demo:** [https://studiomalaguti-preview.netlify.app](https://studiomalaguti-preview.netlify.app)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚡ Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* **Framework:** [Next.js 14+](https://nextjs.org/) (React)
+* **Language:** TypeScript
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+* **Animations:** [Framer Motion](https://www.framer.com/motion/)
+* **Icons:** [Lucide React](https://lucide.dev/)
+* **Maps:** [React Leaflet](https://react-leaflet.js.org/) (OpenStreetMap)
+* **Emails:** [EmailJS](https://www.emailjs.com/)
+* **Notifications:** [Sonner](https://sonner.emilkowal.ski/)
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## ✨ Funzionalità Principali
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 🎨 UI & UX
+* **Design Responsivo:** Layout fluido ottimizzato per Desktop, Tablet e Mobile.
+* **Cinematic Hero:** Sfondo video con titoli animati (effetto Typewriter).
+* **Transizioni di Pagina:** Navigazione fluida tra le rotte senza "scatti".
+* **Micro-interazioni:** Bottoni magnetici, Scroll Progress Bar, Hover effects.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🛠️ Strumenti Utili
+* **Widget Meteo & Riscaldamento:** Rileva temperatura in tempo reale (API Open-Meteo) e indica se è legale accendere il riscaldamento a Milano (Zona E).
+* **Chatbot Intelligente:** Assistente virtuale con logica condizionale per smistare richieste (Condomini, Nuovi Clienti, Urgenze).
+* **Timeline Interattiva:** Storia dello studio animata allo scroll.
+* **Status Studio:** Indicatore "Aperto/Chiuso" basato sull'orario reale di Milano.
 
-## Deploy on Vercel
+### 🗺️ Portfolio Condomini
+* **Mappa Interattiva:** Visualizzazione su mappa OpenStreetMap.
+* **Filtro di Ricerca:** Ricerca istantanea per via o zona.
+* **Sincronizzazione:** Hover sulla lista evidenzia il pin sulla mappa e viceversa.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🌍 Internazionalizzazione (i18n)
+* Supporto completo per **Italiano, Inglese e Spagnolo**.
+* Cambio lingua istantaneo senza ricaricamento pagina (React Context).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### ♿ Accessibilità & Legal
+* **Widget Accessibilità:** Alto Contrasto e Zoom testo.
+* **Cookie Banner:** Gestione consenso GDPR (blocca script finché non accettati).
+* **SEO:** Metadata dinamici, Sitemap.xml, Robots.txt e Open Graph per anteprime social (WhatsApp/Facebook).
+
+### 🛡️ Sicurezza
+* Il sito include un hook personalizzato useProtection che, in produzione, disabilita:
+* **Tasto destro** (Context Menu).
+* **Scorciatoie per Developer Tools** (F12, Ctrl+Shift+I).
+* **Selezione del testo e trascinamento immagini** (Hover).
+
+---
+
+## 🚀 Avvio
+
+1.  **Installa le dipendenze:**
+    ```bash
+    npm install
+    ```
+
+2.  **Avvia il server di sviluppo:**
+    ```bash
+    npm run dev
+    ```
+
+3.  Apri [http://localhost:3000](http://localhost:3000) nel browser.
+
+---
+
+## ⚙️ Configurazione Email (EmailJS)
+
+Il modulo di contatto e il "Lavora con noi" utilizzano **EmailJS** per l'invio reale delle email senza backend.
+
+Per far funzionare l'invio email nel file `src/components/ContactModal.tsx`, è necessario configurare le seguenti costanti o variabili d'ambiente:
+
+```typescript
+const SERVICE_ID = "IL_TUO_SERVICE_ID";
+const TEMPLATE_ID = "IL_TUO_TEMPLATE_ID";
+const PUBLIC_KEY = "LA_TUA_PUBLIC_KEY";
