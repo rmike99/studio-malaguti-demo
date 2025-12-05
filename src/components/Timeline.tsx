@@ -22,7 +22,6 @@ export default function Timeline() {
         </div>
 
         <div className="relative">
-          {/* Linea Centrale */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 -translate-x-1/2"></div>
 
           <div className="space-y-12">
@@ -37,7 +36,6 @@ export default function Timeline() {
                   index % 2 === 0 ? "md:flex-row-reverse" : ""
                 }`}
               >
-                {/* Contenuto */}
                 <div className="flex-1 w-full pl-12 md:pl-0 md:text-right">
                   <div className={`p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-lg transition-all ${index % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
                     <span className="text-4xl font-bold text-slate-200 absolute top-4 right-6 select-none">{event.year}</span>
@@ -46,10 +44,8 @@ export default function Timeline() {
                   </div>
                 </div>
 
-                {/* Pallino Centrale */}
                 <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 bg-emerald-500 rounded-full border-4 border-white shadow-md z-10"></div>
 
-                {/* Spazio Vuoto per bilanciare */}
                 <div className="flex-1 hidden md:block"></div>
               </motion.div>
             ))}

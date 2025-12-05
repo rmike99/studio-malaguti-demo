@@ -56,14 +56,14 @@ export default function LoStudioPage() {
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col gap-3 hover:shadow-md transition-shadow">
               <Clock className="text-emerald-600" size={32} />
               <span className="text-2xl font-bold text-slate-900">
-                <CountUp end={39} suffix="+" /> {/* ANIMATO */}
+                <CountUp end={39} suffix="+" />
               </span>
               <span className="text-sm text-slate-500">{t('studio_stat_exp')}</span>
             </div>
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col gap-3 hover:shadow-md transition-shadow">
               <Building className="text-blue-600" size={32} />
               <span className="text-2xl font-bold text-slate-900">
-                <CountUp end={100} suffix="%" /> {/* ANIMATO */}
+                <CountUp end={100} suffix="%" />
               </span>
               <span className="text-sm text-slate-500">{t('studio_stat_milano')}</span>
             </div>
@@ -81,7 +81,6 @@ export default function LoStudioPage() {
         </div>
       </section>
 
-      {/* SEZIONE TEAM */}
       <section className="py-20 px-6 bg-white border-y border-slate-100">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">

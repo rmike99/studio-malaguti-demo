@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Cloud, Sun, CloudRain, Snowflake, X, CalendarClock, Zap, Wind, Droplets, ThermometerSun } from "lucide-react";
+import { Cloud, Sun, CloudRain, Snowflake, X, CalendarClock, Zap, Wind, Droplets, ThermometerSun, Moon } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function WeatherWidget() {
@@ -12,6 +12,7 @@ export default function WeatherWidget() {
   const [data, setData] = useState({
     temp: 0,
     code: 0,
+    isDay: 1,
     humidity: 0,
     wind: 0,
     isHeatingSeason: false,
@@ -29,13 +30,14 @@ export default function WeatherWidget() {
     const fetchWeather = async () => {
       try {
         const res = await fetch(
-          "https://api.open-meteo.com/v1/forecast?latitude=45.4642&longitude=9.1900&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=Europe%2FRome"
+          "https://api.open-meteo.com/v1/forecast?latitude=45.4642&longitude=9.1900&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,is_day&timezone=Europe%2FRome"
         );
         const json = await res.json();
         
         setData({
           temp: Math.round(json.current.temperature_2m),
           code: json.current.weather_code,
+          isDay: json.current.is_day,
           humidity: json.current.relative_humidity_2m,
           wind: Math.round(json.current.wind_speed_10m),
           isHeatingSeason: checkHeatingSeason(),
@@ -50,15 +52,22 @@ export default function WeatherWidget() {
     fetchWeather();
   }, []);
 
-  // Determina il gradiente di sfondo e l'icona in base al meteo
-  const getWeatherStyle = (code: number) => {
-    if (code <= 1) return { bg: "from-amber-400 to-orange-500", icon: <Sun className="text-white drop-shadow-md" size={48} /> }; // Sole
-    if (code <= 3) return { bg: "from-blue-300 to-slate-400", icon: <Cloud className="text-white drop-shadow-md" size={48} /> }; // Nuvoloso
-    if (code <= 67) return { bg: "from-slate-700 to-blue-800", icon: <CloudRain className="text-white drop-shadow-md" size={48} /> }; // Pioggia
-    return { bg: "from-cyan-400 to-blue-600", icon: <Snowflake className="text-white drop-shadow-md" size={48} /> }; // Neve
+  const getWeatherStyle = (code: number, isDay: number) => {
+    // SE È NOTTE (isDay === 0)
+    if (isDay === 0) {
+      if (code <= 3) return { bg: "from-slate-800 to-indigo-900", icon: <Moon className="text-white drop-shadow-md" size={48} /> };
+      if (code <= 67) return { bg: "from-slate-900 to-blue-900", icon: <CloudRain className="text-white drop-shadow-md" size={48} /> };
+      return { bg: "from-slate-800 to-cyan-900", icon: <Snowflake className="text-white drop-shadow-md" size={48} /> };
+    }
+
+    // SE È GIORNO (isDay === 1)
+    if (code <= 1) return { bg: "from-amber-400 to-orange-500", icon: <Sun className="text-white drop-shadow-md" size={48} /> };
+    if (code <= 3) return { bg: "from-blue-300 to-slate-400", icon: <Cloud className="text-white drop-shadow-md" size={48} /> };
+    if (code <= 67) return { bg: "from-slate-700 to-blue-800", icon: <CloudRain className="text-white drop-shadow-md" size={48} /> };
+    return { bg: "from-cyan-400 to-blue-600", icon: <Snowflake className="text-white drop-shadow-md" size={48} /> };
   };
 
-  const style = getWeatherStyle(data.code);
+  const style = getWeatherStyle(data.code, data.isDay);
 
   if (!data.loaded) return null;
 

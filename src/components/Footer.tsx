@@ -1,28 +1,26 @@
 "use client";
 import { Building2, Mail, Phone, MapPin, Printer } from "lucide-react";
 import Link from "next/link";
-import { useLanguage } from "@/context/LanguageContext"; // <--- 1. IMPORT
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
-  const { t } = useLanguage(); // <--- 2. HOOK
+  const { t } = useLanguage();
 
   return (
     <footer className="bg-slate-900 text-white border-t border-slate-800">
       <div className="max-w-6xl mx-auto px-6 py-16">
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          {/* Brand */}
           <div className="space-y-6">
             <div className="flex items-center gap-2">
               <div className="bg-white text-slate-900 p-1.5 rounded-lg"><Building2 size={24} /></div>
               <span className="text-xl font-bold tracking-tight uppercase">Studio Malaguti</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
-              {t('footer_desc')} {/* Tradotto */}
+              {t('footer_desc')}
             </p>
           </div>
           
-          {/* Contatti */}
           <div>
             <h4 className="font-bold text-lg mb-6 text-emerald-400">{t('footer_contacts')}</h4>
             <ul className="space-y-4 text-slate-300 text-sm">
@@ -41,7 +39,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Servizi Online */}
           <div>
             <h4 className="font-bold text-lg mb-6 text-emerald-400">{t('footer_services')}</h4>
             <ul className="space-y-4 text-slate-300 text-sm">
@@ -59,7 +56,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
           <p>© 2025 Studio Malaguti - Arch. Michele Malaguti.</p>
           <p>{t('footer_piva')}</p>

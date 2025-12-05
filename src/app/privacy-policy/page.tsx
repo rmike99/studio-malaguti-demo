@@ -12,8 +12,6 @@ export default function PrivacyPolicyPage() {
       <Navbar />
 
       <div className="pt-32 pb-20 px-6 max-w-4xl mx-auto">
-        
-        {/* Intestazione */}
         <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 mb-8">
           <div className="flex items-center gap-3 mb-4">
             <div className="bg-emerald-100 p-2 rounded-lg text-emerald-700">
@@ -25,7 +23,6 @@ export default function PrivacyPolicyPage() {
           <p className="text-slate-500">Ultimo aggiornamento: 01 Gennaio 2025</p>
         </div>
 
-        {/* Contenuto Legale */}
         <div className="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-slate-200 space-y-8 text-slate-600 leading-relaxed">
           
           <section>
@@ -92,7 +89,6 @@ export default function PrivacyPolicyPage() {
               Questo sito utilizza protocolli sicuri (HTTPS) per proteggere i tuoi dati durante la navigazione. Non cediamo i tuoi dati a terzi per fini di marketing.
             </p>
           </div>
-
         </div>
       </div>
 

@@ -8,7 +8,6 @@ export default function StudioStatus() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Funzione che calcola lo stato in base all'orario di Milano
     const checkStatus = () => {
       const now = new Date();
       
@@ -19,18 +18,16 @@ export default function StudioStatus() {
       const minutes = milanTime.getMinutes();
       const totalMinutes = hour * 60 + minutes;
 
-      // Orari Apertura: Lun-Ven (1-5), 09:00 (540min) - 18:00 (1080min)
       const isOpenNow = 
-        day >= 1 && day <= 5 && // È un giorno feriale
-        totalMinutes >= 540 && // Dopo le 09:00
-        totalMinutes < 1080;   // Prima delle 18:00
+        day >= 1 && day <= 5 &&
+        totalMinutes >= 540 &&
+        totalMinutes < 1080;
 
       setIsOpen(isOpenNow);
       setLoading(false);
     };
 
     checkStatus();
-    // Aggiorna ogni minuto
     const interval = setInterval(checkStatus, 60000);
     return () => clearInterval(interval);
   }, []);

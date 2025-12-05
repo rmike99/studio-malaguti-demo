@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/dashboard/', // Non indicizzare l'area privata
+      disallow: '/dashboard/',
     },
-    sitemap: 'https://studiomalaguti-demo.vercel.app/sitemap.xml',
+    sitemap: 'https://studiomalaguti-preview.netlify.app/sitemap.xml',
   };
 }

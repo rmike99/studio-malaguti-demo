@@ -51,7 +51,6 @@ export default function CondominiPage() {
     <main className="min-h-screen bg-slate-50 flex flex-col">
       <Navbar />
 
-      {/* Intestazione */}
       <section className="pt-32 pb-8 px-6 bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
@@ -75,10 +74,7 @@ export default function CondominiPage() {
         </div>
       </section>
 
-      {/* CONTENUTO A DUE COLONNE */}
       <div className="max-w-7xl mx-auto w-full flex flex-col-reverse lg:flex-row gap-8 p-6 relative min-h-screen">
-        
-        {/* COLONNA SINISTRA: Lista (Scorre normalmente) */}
         <div className="w-full lg:w-[45%] space-y-4">
           {filteredCondomini.length > 0 ? (
             filteredCondomini.map((condominio) => (
@@ -122,7 +118,6 @@ export default function CondominiPage() {
           )}
         </div>
 
-        {/* COLONNA DESTRA: Mappa (Sticky - Si incolla mentre scorri) */}
         <div className="hidden lg:block flex-1 relative">
            <div className="sticky top-28 h-[calc(100vh-150px)] rounded-3xl overflow-hidden shadow-xl border border-slate-200">
              <CondoMap filteredCondomini={filteredCondomini} hoveredId={hoveredId} />
@@ -131,7 +126,6 @@ export default function CondominiPage() {
 
       </div>
 
-      {/* FOOTER A TUTTA PAGINA (Alla fine dello scroll) */}
       <Footer />
       <WeatherWidget />
       <ChatBot />

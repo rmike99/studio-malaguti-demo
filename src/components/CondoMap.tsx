@@ -7,7 +7,6 @@ import L from "leaflet";
 import { Building2, MapPin } from "lucide-react";
 import { CondominioData } from "@/app/condomini/page";
 
-// FIX PER LE ICONE DI DEFAULT
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
@@ -15,7 +14,6 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
 
-// --- 1. ICONA NORMALE (Smeraldo) ---
 const emeraldIconHtml = `
   <div style="
     background-color: #059669;
@@ -44,7 +42,6 @@ const emeraldIcon = L.divIcon({
   popupAnchor: [0, -35],
 });
 
-// --- 2. ICONA ATTIVA / HOVER (Blu Notte + Grande) ---
 const activeIconHtml = `
   <div style="
     background-color: #0f172a; 
@@ -68,7 +65,7 @@ const activeIconHtml = `
 const activeIcon = L.divIcon({
   className: "custom-active-marker",
   html: activeIconHtml,
-  iconSize: [40, 56], // Più grande
+  iconSize: [40, 56],
   iconAnchor: [20, 56],
   popupAnchor: [0, -45],
 });
@@ -84,7 +81,6 @@ function MapReCenter({ markers }: { markers: CondominioData[] }) {
   return null;
 }
 
-// --- Props aggiornate per ricevere hoveredId ---
 export default function CondoMap({ 
   filteredCondomini, 
   hoveredId 
@@ -108,16 +104,13 @@ export default function CondoMap({
         <MapReCenter markers={filteredCondomini} />
         
         {filteredCondomini.map((condominio) => {
-            // Controlliamo se questo marker è quello evidenziato
             const isActive = condominio.id === hoveredId;
 
             return (
               <Marker 
                 key={condominio.id} 
-                position={condominio.coords} 
-                // Se è attivo usa l'icona Blu Grande, altrimenti quella Smeraldo
+                position={condominio.coords}
                 icon={isActive ? activeIcon : emeraldIcon}
-                // Se è attivo, portalo sopra tutti gli altri (z-index alto)
                 zIndexOffset={isActive ? 1000 : 0}
               >
                 <Popup className="custom-popup">

@@ -13,7 +13,7 @@ export default function MagneticButton({ children, className, onClick }: { child
     const middleX = clientX - (left + width / 2);
     const middleY = clientY - (top + height / 2);
 
-    setPosition({ x: middleX * 0.15, y: middleY * 0.15 }); // 0.15 è la "forza" magnetica
+    setPosition({ x: middleX * 0.15, y: middleY * 0.15 });
   };
 
   const reset = () => {

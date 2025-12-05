@@ -9,7 +9,6 @@ export default function AccessibilityWidget() {
   const [zoomLevel, setZoomLevel] = useState(100);
   const [highContrast, setHighContrast] = useState(false);
 
-  // 1. Carica preferenze all'avvio
   useEffect(() => {
     const savedZoom = localStorage.getItem("access_zoom");
     const savedContrast = localStorage.getItem("access_contrast");
@@ -18,7 +17,6 @@ export default function AccessibilityWidget() {
     if (savedContrast === "true") setHighContrast(true);
   }, []);
 
-  // 2. Applica Zoom (questo non rompe nulla, lo teniamo così)
   useEffect(() => {
     const html = document.querySelector("html");
     if (html) {
@@ -27,7 +25,6 @@ export default function AccessibilityWidget() {
     localStorage.setItem("access_zoom", zoomLevel.toString());
   }, [zoomLevel]);
 
-  // 3. Salva preferenza Contrasto (ma non tocca più il body direttamente)
   useEffect(() => {
     localStorage.setItem("access_contrast", highContrast.toString());
   }, [highContrast]);
@@ -39,20 +36,16 @@ export default function AccessibilityWidget() {
 
   return (
     <>
-      {/* --- LENTE ALTO CONTRASTO (OVERLAY) --- */}
-      {/* Questo div copre tutto lo schermo ma lascia passare i click.
-          Applica il filtro a tutto ciò che c'è sotto, senza rompere i 'fixed'. */}
       {highContrast && (
         <div 
           className="fixed inset-0 z-[99999] pointer-events-none"
           style={{
             backdropFilter: "grayscale(100%) contrast(150%)",
-            backgroundColor: "rgba(255, 255, 255, 0.05)" // Leggera tinta per uniformare
+            backgroundColor: "rgba(255, 255, 255, 0.05)"
           }}
         />
       )}
 
-      {/* --- WIDGET DI CONTROLLO --- */}
       <div className="fixed bottom-6 left-6 z-[90] font-sans">
         
         <AnimatePresence>
@@ -69,8 +62,6 @@ export default function AccessibilityWidget() {
               </div>
 
               <div className="space-y-4">
-                
-                {/* Controllo Testo */}
                 <div>
                   <div className="flex items-center gap-2 text-xs text-slate-300 mb-2">
                     <Type size={14} /> Dimensione Testo
@@ -92,7 +83,6 @@ export default function AccessibilityWidget() {
                   </div>
                 </div>
 
-                {/* Controllo Contrasto */}
                 <div>
                   <div className="flex items-center gap-2 text-xs text-slate-300 mb-2">
                     <Sun size={14} /> Visibilità
@@ -109,20 +99,17 @@ export default function AccessibilityWidget() {
                   </button>
                 </div>
 
-                {/* Reset */}
                 <button 
                   onClick={handleReset}
                   className="w-full border border-slate-700 text-slate-400 hover:text-white hover:border-slate-500 py-2 rounded-lg text-xs flex items-center justify-center gap-2 transition-all"
                 >
                   <RotateCcw size={12} /> Ripristina Default
                 </button>
-
               </div>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Bottone Rotondo di Apertura */}
         <button 
           onClick={() => setIsOpen(!isOpen)}
           className="w-12 h-12 bg-slate-900 hover:bg-slate-800 text-white rounded-full flex items-center justify-center shadow-lg border-2 border-slate-700 transition-transform active:scale-95"

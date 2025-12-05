@@ -23,7 +23,6 @@ export default function Dashboard() {
       animate="visible"
       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
     >
-      {/* CARD 1 */}
       <motion.div variants={itemVariants} className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-lg transition-all group">
         <div className="w-12 h-12 bg-blue-50 text-blue-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
            <Building2 size={24} />
@@ -37,7 +36,6 @@ export default function Dashboard() {
         </div>
       </motion.div>
 
-      {/* CARD 2 */}
       <motion.div variants={itemVariants} className="bg-slate-900 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all group text-white">
         <div className="w-12 h-12 bg-white/10 text-emerald-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
            <Ruler size={24} />
@@ -51,7 +49,6 @@ export default function Dashboard() {
         </div>
       </motion.div>
 
-      {/* CARD 3 */}
       <motion.div variants={itemVariants} className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-lg transition-all group">
         <div className="w-12 h-12 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
            <HardHat size={24} />
@@ -65,7 +62,6 @@ export default function Dashboard() {
         </div>
       </motion.div>
 
-      {/* CARD 4 */}
       <motion.div variants={itemVariants} className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-lg transition-all group">
         <div className="w-12 h-12 bg-purple-50 text-purple-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
            <Gavel size={24} />

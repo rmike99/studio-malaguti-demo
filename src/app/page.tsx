@@ -21,8 +21,7 @@ export default function Home() {
       <Hero />
 
       <TrustBar />
-      
-      {/* Sezione Servizi (Dashboard) */}
+
       <div className="max-w-6xl mx-auto px-6 py-20">
         <div className="text-center mb-12">
           <span className="text-emerald-600 font-bold text-sm tracking-widest uppercase">{t('serv_title')}</span>
@@ -31,12 +30,10 @@ export default function Home() {
         <Dashboard />
       </div>
 
-      {/* Sezione Timeline (Sfondo Bianco Full Width) */}
       <div className="w-full bg-white">
         <Timeline />
       </div>
-
-      {/* Ticker (Sfondo Bianco Full Width - Continuo con la Timeline) */}
+      
       <div className="w-full overflow-hidden py-6 border-t border-slate-100 bg-white relative">
           <motion.div 
             className="flex gap-20 whitespace-nowrap"

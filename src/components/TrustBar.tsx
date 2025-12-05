@@ -5,7 +5,7 @@ export default function TrustBar() {
   const partners = [
     { name: "ANACI", sub: "Associazione Nazionale", icon: <Users size={24} /> },
     { name: "Certificazione ISO", sub: "Qualità 9001", icon: <Award size={24} /> },
-    { name: "Sicurezza Cantieri", sub: "D.Lgs 81/08", icon: <HardHatIcon /> }, // Icona custom sotto
+    { name: "Sicurezza Cantieri", sub: "D.Lgs 81/08", icon: <HardHatIcon /> },
     { name: "Polizza RC", sub: "Copertura Totale", icon: <ShieldCheck size={24} /> },
     { name: "Camera di Commercio", sub: "Milano", icon: <Building size={24} /> },
   ];
@@ -35,7 +35,6 @@ export default function TrustBar() {
   );
 }
 
-// Icona helper per non importare troppe cose
 function HardHatIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M4 15v-3a6 6 0 0 1 6-6h0a6 6 0 0 1 6 6v3"/><path d="M14 6l-3 3"/></svg>

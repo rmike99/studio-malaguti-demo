@@ -7,7 +7,7 @@ export default function ClientLayout({
 }: {
   children: React.ReactNode;
 }) {
-  useProtection(); // ATTIVA LO SCUDO
+  useProtection();
 
   return <>{children}</>;
 }

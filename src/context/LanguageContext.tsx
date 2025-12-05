@@ -14,7 +14,6 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>('IT');
 
-  // Carica la lingua salvata o usa IT
   useEffect(() => {
     const savedLang = localStorage.getItem('app_language') as Language;
     if (savedLang && ['IT', 'EN', 'ES'].includes(savedLang)) {
@@ -27,7 +26,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('app_language', lang);
   };
 
-  // Funzione di traduzione (t)
   const t = (key: keyof typeof translations['IT']) => {
     return translations[language][key] || key;
   };

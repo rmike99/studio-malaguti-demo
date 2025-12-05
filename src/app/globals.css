@@ -3,25 +3,20 @@
 @tailwind utilities;
 
 :root {
-  /* Sfondo: Bianco Ghiaccio (Molto pulito) */
-  background-color: #F8FAFC; 
-  /* Testo: Grigio Scuro (Non nero assoluto, più elegante) */
+  background-color: #F8FAFC;
   color: #1E293B; 
 }
 
 body {
   background-color: #F8FAFC;
   color: #1E293B;
-  /* Font più leggibile e professionale */
   font-feature-settings: "ss01", "cv11"; 
 
-  /* Blocca la selezione del testo su TUTTI i browser */
-  -webkit-user-select: none; /* Safari/Chrome */
-  -moz-user-select: none;    /* Firefox */
-  -ms-user-select: none;     /* IE/Edge */
-  user-select: none;         /* Standard */
-  
-  /* Blocca il trascinamento delle immagini */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
   -webkit-user-drag: none;
 }
 
@@ -32,7 +27,6 @@ input, textarea {
   user-select: text;
 }
 
-/* Stile per le barre di scorrimento più eleganti */
 ::-webkit-scrollbar {
   width: 8px;
 }

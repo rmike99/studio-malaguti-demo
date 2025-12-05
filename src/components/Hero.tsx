@@ -16,7 +16,6 @@ export default function Hero() {
       
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
 
-      {/* Sfondo Architettonico Astratto */}
       <div className="absolute top-0 right-0 -z-10 w-[800px] h-[800px] bg-emerald-50 rounded-full blur-[120px] opacity-60 translate-x-1/3 -translate-y-1/4"></div>
       
       <div className="max-w-5xl mx-auto text-center space-y-8 px-6">
@@ -43,7 +42,6 @@ export default function Hero() {
 
         </motion.h1>
         
-        {/* Sottotitolo */}
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -53,7 +51,6 @@ export default function Hero() {
           {t('hero_desc')}
         </motion.p>
 
-        {/* Bottoni Azione */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -93,7 +90,6 @@ export default function Hero() {
 
       </div>
 
-      {/* Scroll Down Indicator */}
       <motion.div 
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 text-white/50 animate-bounce"

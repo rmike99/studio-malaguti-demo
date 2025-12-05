@@ -6,7 +6,7 @@ import { useInView } from "framer-motion";
 export default function CountUp({ end, duration = 2, suffix = "" }: { end: number, duration?: number, suffix?: string }) {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true }); // Parte solo quando lo vedi
+  const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
     if (!isInView) return;
@@ -19,7 +19,6 @@ export default function CountUp({ end, duration = 2, suffix = "" }: { end: numbe
       const progress = timestamp - startTime;
       const percentage = Math.min(progress / (duration * 1000), 1);
       
-      // Easing function per rallentare alla fine (easeOutExpo)
       const ease = percentage === 1 ? 1 : 1 - Math.pow(2, -10 * percentage);
       
       setCount(Math.floor(ease * end));

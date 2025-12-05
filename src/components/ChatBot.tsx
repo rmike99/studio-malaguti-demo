@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Bot, FileText } from "lucide-react";
-import { useLanguage } from "@/context/LanguageContext"; // <--- Importa il contesto lingua
+import { useLanguage } from "@/context/LanguageContext";
 
 type Message = { 
   id: number; 
@@ -14,27 +14,26 @@ type Message = {
 };
 
 export default function ChatBot() {
-  const { t, language } = useLanguage(); // <--- Ottieni lingua corrente e funzione t()
+  const { t, language } = useLanguage();
   
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // RESETTA LA CHAT QUANDO CAMBIA LA LINGUA
   useEffect(() => {
     setMessages([{
       id: 1,
       text: t('chat_welcome'),
       sender: 'bot',
       options: [
-        t('chat_opt_1'), // "Sono un Condomino" (in IT/EN/ES)
+        t('chat_opt_1'),
         t('chat_opt_2'), 
         t('chat_opt_3'), 
         t('chat_opt_4')
       ]
     }]);
-  }, [language, t]); // Esegue ogni volta che 'language' cambia
+  }, [language, t]);
 
   useEffect(() => {
     if(isChatOpen) messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -48,21 +47,16 @@ export default function ChatBot() {
     setTimeout(() => {
       let botResponse: Message;
 
-      // CONFRONTIAMO CON LE TRADUZIONI ATTUALI
-      // Usiamo t(...) per verificare quale bottone è stato premuto nella lingua corrente
-
-      // SCENARIO 1: CONDOMINO
       if (option === t('chat_opt_1')) {
         botResponse = { 
           id: Date.now() + 1, 
           text: t('bot_ans_resident'), 
           sender: 'bot', 
-          options: [t('bot_opt_resident_1'), t('chat_opt_back')], // "Accedi Area" e "Torna Indietro"
+          options: [t('bot_opt_resident_1'), t('chat_opt_back')],
           actionLink: { text: t('bot_opt_resident_1'), url: "/area-utenti" }
         };
       } 
-      
-      // SCENARIO 2: AMMINISTRATORE
+
       else if (option === t('chat_opt_2')) {
         botResponse = { 
           id: Date.now() + 1, 
@@ -72,7 +66,6 @@ export default function ChatBot() {
         };
       }
 
-      // SCENARIO 3: TECNICO
       else if (option === t('chat_opt_3')) {
         botResponse = { 
           id: Date.now() + 1, 
@@ -82,7 +75,6 @@ export default function ChatBot() {
         };
       }
 
-      // SCENARIO 4: URGENZA
       else if (option === t('chat_opt_4')) {
         botResponse = { 
           id: Date.now() + 1, 
@@ -92,7 +84,6 @@ export default function ChatBot() {
         };
       }
 
-      // AZIONI
       else if (option === t('bot_opt_admin_2') || option === t('bot_opt_tech_1')) {
         window.location.href = "tel:0245409394";
         botResponse = { id: Date.now() + 1, text: t('bot_ans_call'), sender: 'bot', options: [t('chat_opt_back')] };
@@ -102,7 +93,6 @@ export default function ChatBot() {
         botResponse = { id: Date.now() + 1, text: t('bot_ans_mail'), sender: 'bot', options: [t('chat_opt_back')] };
       }
       
-      // DEFAULT (TORNA AL MENU)
       else {
         botResponse = { 
           id: Date.now() + 1, 
@@ -127,7 +117,6 @@ export default function ChatBot() {
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             className="absolute bottom-20 right-0 w-[340px] md:w-[380px] h-[550px] bg-white border border-slate-200 rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           >
-            {/* Header */}
             <div className="p-4 bg-slate-900 text-white flex justify-between items-center shrink-0">
                 <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-900 border-2 border-emerald-500 relative">
@@ -142,7 +131,6 @@ export default function ChatBot() {
                 <button onClick={() => setIsChatOpen(false)} className="hover:text-emerald-400 transition-colors"><X size={20}/></button>
             </div>
 
-            {/* Chat Area */}
             <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-slate-50">
               {messages.map((msg) => (
                 <div key={msg.id} className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}>
@@ -175,7 +163,6 @@ export default function ChatBot() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Opzioni Rapide */}
             <div className="p-3 bg-white border-t border-slate-100 flex flex-wrap gap-2 shrink-0">
                 {messages[messages.length - 1]?.options?.map((opt, idx) => (
                     <button 

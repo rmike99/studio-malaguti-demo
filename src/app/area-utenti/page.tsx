@@ -9,7 +9,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import WeatherWidget from "@/components/WeatherWidget";
 
 export default function AreaUtentiPage() {
-  const { t } = useLanguage(); // <--- 2. Usa Hook
+  const { t } = useLanguage();
 
   return (
     <main className="min-h-screen bg-slate-50 flex flex-col selection:bg-emerald-200 selection:text-emerald-900">
@@ -18,8 +18,6 @@ export default function AreaUtentiPage() {
       <div className="flex-1 pt-32 pb-20 px-6 max-w-6xl mx-auto w-full">
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          
-          {/* Colonna Sinistra */}
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -38,7 +36,6 @@ export default function AreaUtentiPage() {
               {t('area_desc')}
             </p>
 
-            {/* Cards Tradotte */}
             <div className="space-y-4 pt-4">
               <div className="flex items-start gap-4 p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
                 <div className="bg-blue-50 p-2 rounded-lg text-blue-600"><FileText size={24}/></div>
@@ -67,7 +64,6 @@ export default function AreaUtentiPage() {
 
           </motion.div>
 
-          {/* Colonna Destra */}
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
