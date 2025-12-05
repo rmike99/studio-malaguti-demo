@@ -5,7 +5,8 @@ import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
 import { ShieldCheck, FileText, CreditCard, Lock, ArrowRight, Download } from "lucide-react";
 import { motion } from "framer-motion";
-import { useLanguage } from "@/context/LanguageContext"; // <--- 1. Import Hook
+import { useLanguage } from "@/context/LanguageContext";
+import WeatherWidget from "@/components/WeatherWidget";
 
 export default function AreaUtentiPage() {
   const { t } = useLanguage(); // <--- 2. Usa Hook
@@ -104,6 +105,7 @@ export default function AreaUtentiPage() {
       </div>
 
       <Footer />
+      <WeatherWidget />
       <ChatBot />
     </main>
   );

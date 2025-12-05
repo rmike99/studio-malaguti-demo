@@ -1,7 +1,7 @@
 "use client";
 import { motion, Variants } from "framer-motion";
 import { Building2, Ruler, Gavel, HardHat, ArrowRight } from "lucide-react";
-import { useLanguage } from "@/context/LanguageContext"; // <--- IMPORT
+import { useLanguage } from "@/context/LanguageContext";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -14,7 +14,7 @@ const itemVariants: Variants = {
 };
 
 export default function Dashboard() {
-  const { t } = useLanguage(); // <--- HOOK
+  const { t } = useLanguage();
 
   return (
     <motion.div 

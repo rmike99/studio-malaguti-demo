@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
 import { Shield, Lock } from "lucide-react";
+import WeatherWidget from "@/components/WeatherWidget";
 
 export default function PrivacyPolicyPage() {
   return (
@@ -96,6 +97,7 @@ export default function PrivacyPolicyPage() {
       </div>
 
       <Footer />
+      <WeatherWidget />
       <ChatBot />
     </main>
   );

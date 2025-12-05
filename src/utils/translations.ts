@@ -60,6 +60,14 @@ export const translations = {
     studio_stat_assoc: "Iscrizione Associazione",
     studio_stat_tech: "Competenza Tecnica",
     studio_quote: "\"Il condominio non è solo un insieme di numeri, ma una struttura viva che richiede cura tecnica, manutenzione e visione architettonica.\"",
+    
+    // TEAM
+    team_title: "Il Nostro Team",
+    team_subtitle: "Professionisti qualificati al tuo servizio.",
+    role_founder: "Fondatore & Direttore Tecnico",
+    role_admin_head: "Resp. Amministrativa",
+    role_tech_head: "Geometra di Cantiere",
+    role_front_office: "Segreteria & Relazioni Condomini",
 
     // Pagina: Servizi Tecnici
     tech_hero_title: "Studio Tecnico Interno.",
@@ -90,6 +98,7 @@ export const translations = {
     footer_services: "Servizi Online",
     footer_privacy: "Privacy Policy",
     footer_piva: "P.IVA disponibile in sede.",
+    
     contact_title: "Scrivi allo Studio",
     contact_subtitle: "Richiesta inviata direttamente all'Arch. Malaguti",
     contact_name: "Nome e Cognome",
@@ -154,6 +163,19 @@ export const translations = {
     time_2015_desc: "Introduzione dei primi sistemi di gestione online e trasparenza digitale per i condomini.",
     time_2025_title: "Futuro Smart",
     time_2025_desc: "Integrazione AI, Area Riservata avanzata e gestione energetica sostenibile.",
+
+    //Meteo
+    weather_title: "Meteo & Impianti",
+    weather_status_on: "Riscaldamento: ATTIVO",
+    weather_status_off: "Riscaldamento: SPENTO",
+    weather_dates: "Zona E: 15 Ott - 15 Apr",
+    weather_temp: "Temp. Esterna",
+    weather_loading: "Rilevamento...",
+    weather_humidity: "Umidità",
+    weather_wind: "Vento",
+    weather_heating_label: "Stato Impianti",
+    weather_heating_active: "Accensione Consentita",
+    weather_heating_inactive: "Impianti Spenti",
   },
   EN: {
     nav_home: "Home",
@@ -210,6 +232,14 @@ export const translations = {
     studio_stat_assoc: "Association Member",
     studio_stat_tech: "Technical Expertise",
     studio_quote: "\"A condominium is not just a set of numbers, but a living structure that requires technical care, maintenance, and architectural vision.\"",
+    
+    // TEAM
+    team_title: "Our Team",
+    team_subtitle: "Qualified professionals at your service.",
+    role_founder: "Founder & Technical Director",
+    role_admin_head: "Head of Administration",
+    role_tech_head: "Site Surveyor",
+    role_front_office: "Front Office & Resident Relations",
 
     tech_hero_title: "Internal Technical Studio.",
     tech_hero_desc: "Beyond administration. A single point of contact for the technical and structural needs of your property.",
@@ -300,6 +330,19 @@ export const translations = {
     time_2015_desc: "Introduction of the first online management systems and digital transparency for residents.",
     time_2025_title: "Smart Future",
     time_2025_desc: "AI integration, advanced Client Area, and sustainable energy management.",
+
+    //Meteo
+    weather_title: "Weather & Systems",
+    weather_status_on: "Heating: ON",
+    weather_status_off: "Heating: OFF",
+    weather_dates: "Zone E: Oct 15 - Apr 15",
+    weather_temp: "Outside Temp",
+    weather_loading: "Loading...",
+    weather_humidity: "Humidity",
+    weather_wind: "Wind",
+    weather_heating_label: "System Status",
+    weather_heating_active: "Heating Allowed",
+    weather_heating_inactive: "Heating Off",
   },
   ES: {
     nav_home: "Inicio",
@@ -356,6 +399,14 @@ export const translations = {
     studio_stat_assoc: "Miembro Asociación",
     studio_stat_tech: "Competencia Técnica",
     studio_quote: "\"El condominio no es solo un conjunto de números, sino una estructura viva que requiere cuidado técnico, mantenimiento y visión arquitectónica.\"",
+    
+    // TEAM
+    team_title: "Nuestro Equipo",
+    team_subtitle: "Profesionales cualificados a su servicio.",
+    role_founder: "Fundador y Director Técnico",
+    role_admin_head: "Resp. Administrativa",
+    role_tech_head: "Aparejador de Obra",
+    role_front_office: "Secretaría y Atención al Cliente",
 
     tech_hero_title: "Estudio Técnico Interno.",
     tech_hero_desc: "Más allá de la administración. Un único interlocutor para las necesidades técnicas y estructurales de su inmueble.",
@@ -446,5 +497,18 @@ export const translations = {
     time_2015_desc: "Introducción de los primeros sistemas de gestión en línea y transparencia digital.",
     time_2025_title: "Futuro Inteligente",
     time_2025_desc: "Integración de IA, Área Reservada avanzada y gestión energética sostenible.",
+
+    //Meteo
+    weather_title: "Clima y Sistemas",
+    weather_status_on: "Calefacción: ACTIVADA",
+    weather_status_off: "Calefacción: APAGADA",
+    weather_dates: "Zona E: 15 Oct - 15 Abr",
+    weather_temp: "Temp. Exterior",
+    weather_loading: "Cargando...",
+    weather_humidity: "Humedad",
+    weather_wind: "Viento",
+    weather_heating_label: "Estado Sistemas",
+    weather_heating_active: "Encendido Permitido",
+    weather_heating_inactive: "Sistemas Apagados",
   }
 };

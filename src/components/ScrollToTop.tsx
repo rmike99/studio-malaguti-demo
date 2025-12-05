@@ -35,7 +35,7 @@ export default function ScrollToTop() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.5 }}
           onClick={scrollToTop}
-          className="fixed bottom-24 right-6 z-[80] p-3 bg-white text-slate-900 rounded-full shadow-lg border border-slate-200 hover:bg-slate-50 transition-colors"
+          className="fixed bottom-44 right-6 z-[80] p-3 bg-white text-slate-900 rounded-full shadow-lg border border-slate-200 hover:bg-slate-50 transition-colors"
           title="Torna su"
         >
           <ArrowUp size={20} />

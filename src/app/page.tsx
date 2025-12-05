@@ -9,6 +9,7 @@ import ChatBot from "@/components/ChatBot";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
 import TrustBar from "@/components/TrustBar";
+import WeatherWidget from "@/components/WeatherWidget";
 
 export default function Home() {
   const { t } = useLanguage();
@@ -55,6 +56,7 @@ export default function Home() {
       </div>
 
       <Footer />
+      <WeatherWidget />
       <ChatBot /> 
     </main>
   );

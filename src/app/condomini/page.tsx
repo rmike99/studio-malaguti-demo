@@ -7,6 +7,7 @@ import ChatBot from "@/components/ChatBot";
 import { motion } from "framer-motion";
 import { Building, MapPin, Search } from "lucide-react";
 import dynamic from 'next/dynamic';
+import WeatherWidget from "@/components/WeatherWidget";
 
 export type CondominioData = {
   id: number;
@@ -132,7 +133,7 @@ export default function CondominiPage() {
 
       {/* FOOTER A TUTTA PAGINA (Alla fine dello scroll) */}
       <Footer />
-      
+      <WeatherWidget />
       <ChatBot />
     </main>
   );
