@@ -2,10 +2,8 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ChatBot from "@/components/ChatBot";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import WeatherWidget from "@/components/WeatherWidget";
 
 export default function DoveSiamoPage() {
   const { t } = useLanguage();
@@ -73,8 +71,6 @@ export default function DoveSiamoPage() {
       </div>
 
       <Footer />
-      <WeatherWidget />
-      <ChatBot />
     </main>
   );
 }

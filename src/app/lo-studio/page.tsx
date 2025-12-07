@@ -2,12 +2,10 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ChatBot from "@/components/ChatBot";
 import { motion } from "framer-motion";
 import { Award, Clock, Users, Building, Linkedin, Mail } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import CountUp from "@/components/CountUp";
-import WeatherWidget from "@/components/WeatherWidget";
 
 export default function LoStudioPage() {
   const { t } = useLanguage();
@@ -126,8 +124,6 @@ export default function LoStudioPage() {
       </section>
 
       <Footer />
-      <WeatherWidget />
-      <ChatBot />
     </main>
   );
 }

@@ -2,11 +2,9 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ChatBot from "@/components/ChatBot";
 import { motion } from "framer-motion";
 import { Ruler, HardHat, FileText, LayoutTemplate, CheckCircle } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import WeatherWidget from "@/components/WeatherWidget";
 
 export default function ServiziTecniciPage() {
   const { t } = useLanguage();
@@ -77,8 +75,6 @@ export default function ServiziTecniciPage() {
       </section>
 
       <Footer />
-      <WeatherWidget />
-      <ChatBot />
     </main>
   );
 }

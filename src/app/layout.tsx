@@ -10,19 +10,20 @@ import { LanguageProvider } from "@/context/LanguageContext";
 import ScrollProgress from "@/components/ScrollProgress";
 import { CookieProvider } from "@/context/CookieContext";
 import AnalyticsManager from "@/components/AnalyticsManager";
+import ChatBot from "@/components/ChatBot"; 
+import WeatherWidget from "@/components/WeatherWidget";
+import WelcomeScreen from "@/components/WelcomeScreen"; 
 import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://studiomalaguti-preview.netlify.app'),
-
   title: {
     default: "Studio Malaguti | Amministrazione e Architettura Milano",
     template: "%s | Studio Malaguti"
   },
   description: "Studio di amministrazione condominiale e consulenza tecnica a Milano. Gestione trasparente, Area Riservata e Sicurezza Cantieri.",
-  
   openGraph: {
     title: "Studio Malaguti | Eccellenza nella gestione immobiliare",
     description: "Amministrazione condominiale e studio tecnico integrato a Milano dal 1986.",
@@ -75,8 +76,15 @@ export default function RootLayout({
           <CookieProvider>
             
             <ClientLayout>
+              <WelcomeScreen />
+
               {children}
-              
+              <div className="fixed z-[60]">
+                <ChatBot />
+                <WeatherWidget />
+              </div>
+
+              {/* Altri componenti globali */}
               <CookieBanner />
               <AccessibilityWidget />
               <ScrollToTop />
