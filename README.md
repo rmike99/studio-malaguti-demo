@@ -50,7 +50,7 @@ Il sito è costruito con **Next.js (App Router)** e **TypeScript**, progettato p
 * **SEO:** Metadata dinamici, Sitemap.xml, Robots.txt e Open Graph per anteprime social (WhatsApp/Facebook).
 
 ### 🛡️ Sicurezza
-* Il sito include un hook personalizzato useProtection che, in produzione, disabilita:
+Il sito include un hook personalizzato useProtection che, in produzione, disabilita:
 * **Tasto destro** (Context Menu).
 * **Scorciatoie per Developer Tools** (F12, Ctrl+Shift+I).
 * **Selezione del testo e trascinamento immagini** (Hover).
