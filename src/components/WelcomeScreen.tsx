@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import Image from "next/image";
 
 const StaggeredText = ({ text, delay = 0, className = "" }: { text: string, delay?: number, className?: string }) => {
   const letters = Array.from(text);
   
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
       opacity: 1,
@@ -15,7 +15,7 @@ const StaggeredText = ({ text, delay = 0, className = "" }: { text: string, dela
     })
   };
 
-  const child = {
+  const child: Variants = {
     visible: {
       opacity: 1,
       y: 0,
@@ -52,26 +52,29 @@ export default function WelcomeScreen() {
   const [phase, setPhase] = useState<number>(0);
 
   useEffect(() => {
-    const hasVisited = sessionStorage.getItem("hasVisited");
+    if (typeof window !== "undefined") {
+      const hasVisited = sessionStorage.getItem("hasVisited");
 
-    if (!hasVisited) {
-      setShowWelcome(true);
-      document.body.style.overflow = "hidden";
+      if (!hasVisited) {
+        setShowWelcome(true);
+        document.body.style.overflow = "hidden";
 
-      setTimeout(() => setPhase(1), 2000);
-      setTimeout(() => setPhase(2), 5000);
-      setTimeout(() => setPhase(3), 8000);
+        // TIMELINE (20 Secondi)
+        setTimeout(() => setPhase(1), 2000);
+        setTimeout(() => setPhase(2), 5000);
+        setTimeout(() => setPhase(3), 8000);
 
-      const totalTimer = setTimeout(() => {
-        setShowWelcome(false);
-        sessionStorage.setItem("hasVisited", "true");
-        
-        setTimeout(() => {
-          document.body.style.overflow = "unset";
-        }, 2000);
-      }, 18000); 
+        const totalTimer = setTimeout(() => {
+          setShowWelcome(false);
+          sessionStorage.setItem("hasVisited", "true");
+          
+          setTimeout(() => {
+            document.body.style.overflow = "unset";
+          }, 2000);
+        }, 18000); 
 
-      return () => clearTimeout(totalTimer);
+        return () => clearTimeout(totalTimer);
+      }
     }
   }, []);
 
